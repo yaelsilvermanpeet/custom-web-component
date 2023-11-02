@@ -1,29 +1,28 @@
 class WordCount extends HTMLElement {
-    //constructor can custom child behaviors
     constructor() {
-        super()
-        const parent = this.parentNode
-        console.log(parent)
-        const shadow = this.attachShadow({mode: 'open'})
-        const text = document.createElement('span')
-        shadow.appendChild(text)
+        super();
+        const shadow = this.attachShadow({ mode: 'open' });
+        const text = document.createElement('span');
+        shadow.appendChild(text);
 
-        const count = `${this.countWords(parent)}`
-        text.textContent = count;
-    
+        // Get a reference to the textarea element
+        const textarea = this.closest('.container').querySelector('.text-input-area');
 
-    setInterval(()=> {
-    const count = `${this.countWords(parent)}`
-    text.textContent = count
-    }, 200)
+        // Update the word count when the textarea content changes
+        textarea.addEventListener('input', () => {
+            const count = this.countWords(textarea.value);
+            text.textContent = count;
+        });
+
+        // Initial word count
+        const initialCount = this.countWords(textarea.value);
+        text.textContent = initialCount;
     }
 
-
-    countWords(node) {
-        const text = node.innerText || node.textContent
-        return text.split(/\s+/g).length
+    countWords(text) {
+        const words = text.split(/\s+/).filter(word => word !== '');
+        return `Words: ${words.length}`;
     }
 }
 
-customElements.define("word-count", WordCount);
-//define parameters are name, class, extends
+customElements.define('word-count', WordCount);

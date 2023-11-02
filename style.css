@@ -1,26 +1,72 @@
+:root {
+    --light-bg: linear-gradient(white, rgb(120, 178, 213));
+    --light-text: #252525;
+    --light-container: rgba(255, 255, 255, 0.5);
+
+    --dark-bg: linear-gradient(#282828, #5e5a66);
+    --dark-text: #e0dcfc;
+    --dark-container:rgba(15, 15, 15, 0.5);
+}
+
+/* Use media queries to apply the appropriate background based on dark mode */
+@media (prefers-color-scheme: light) {
+    body {
+        background-image: var(--light-bg);
+        color: var(--light-text);
+    }
+
+    .container {
+        background-color: var(--light-container);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    .container {
+        background-color: var(--dark-container);
+    }
+}
+
+
+html, body {
+    margin: 0;
+    height: 100%; /* Ensure both <html> and <body> cover the viewport height */
+}
+
 body {
     margin: 0;
-    background-color: aliceblue;
+    background-repeat: no-repeat; /* Prevent repeating in Firefox */
+    background-attachment: fixed;
 }
 .header {
     text-align: center;
 }
 
-
 .container {
     font-family: sans-serif;
     text-align: center;
-    background-color: white;
     width: 60%;
-    height: 100%;
+    min-height: 40%;
     margin: auto;
+    margin-top: 10%;
     padding: 25px;
-    border: 1px solid #cccccc;
     border-radius: 5px;
     line-height: 1.4;
 }
 
 .text-input-area {
     width: 100%;
-
+    border: none;
+    border-radius: 1px;
+    resize: vertical;
 }
+
+::-webkit-resizer {
+    border-radius: 10px;
+    background: rgb(99, 138, 187);
+}
+
