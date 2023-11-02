@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    background-color: aliceblue;
+}
+.header {
+    text-align: center;
+}
+
+
+.container {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: white;
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    padding: 25px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    line-height: 1.4;
+}
+
+.text-input-area {
+    width: 100%;
+
+}
